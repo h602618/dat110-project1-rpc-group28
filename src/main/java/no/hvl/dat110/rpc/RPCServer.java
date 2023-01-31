@@ -8,7 +8,6 @@ import no.hvl.dat110.messaging.Message;
 import no.hvl.dat110.messaging.MessagingServer;
 
 public class RPCServer {
-
 	private MessagingServer msgserver;
 	private MessageConnection connection;
 	
@@ -17,10 +16,8 @@ public class RPCServer {
 	private HashMap<Byte,RPCRemoteImpl> services;
 	
 	public RPCServer(int port) {
-		
 		this.msgserver = new MessagingServer(port);
-		this.services = new HashMap<Byte,RPCRemoteImpl>();
-		
+		this.services = new HashMap<>();
 	}
 	
 	public void run() {
@@ -37,7 +34,6 @@ public class RPCServer {
 		boolean stop = false;
 		
 		while (!stop) {
-	    
 		   byte rpcid = 0;
 		   Message requestmsg, replymsg;
 		   
@@ -67,7 +63,6 @@ public class RPCServer {
 	}
 	
 	public void stop() {
-
 		if (connection != null) {
 			connection.close();
 		} else {
@@ -79,6 +74,5 @@ public class RPCServer {
 		} else {
 			System.out.println("RPCServer.stop - msgserver was null");
 		}
-		
 	}
 }
