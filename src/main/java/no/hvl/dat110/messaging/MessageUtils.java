@@ -15,11 +15,11 @@ public class MessageUtils {
         }
 
         return segment;
-
     }
 
     public static Message decapsulate(byte[] segment) {
         byte[] data = new byte[segment[0]];
+
         for (int i = 0; i < data.length; i++) {
             data[i] = segment[i + 1];
         }

@@ -1,9 +1,9 @@
 package no.hvl.dat110.rpc;
 
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 
 public class RPCUtils {
-
     public static byte[] encapsulate(byte rpcid, byte[] payload) {
         byte[] rpcmsg = new byte[payload.length + 1];
 
@@ -16,13 +16,7 @@ public class RPCUtils {
     }
 
     public static byte[] decapsulate(byte[] rpcmsg) {
-        byte[] payload = new byte[rpcmsg.length - 1];
-
-        for (int i = 0; i < payload.length; i++) {
-            payload[i] = rpcmsg[i + 1];
-        }
-
-        return payload;
+        return Arrays.copyOfRange(rpcmsg, 1, rpcmsg.length);
     }
 
     // convert String to byte array

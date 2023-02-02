@@ -5,20 +5,16 @@ import no.hvl.dat110.rpc.RPCUtils;
 import no.hvl.dat110.rpc.RPCServer;
 
 public class TestIntIntImpl extends RPCRemoteImpl {
-
 	public TestIntIntImpl(byte rpcid, RPCServer rpcserver) {
 		super(rpcid,rpcserver);
 	}
 	
 	public byte[] invoke(byte[] request) {
-		
 		int x = RPCUtils.unmarshallInteger(request);
 		
 		int resx = m(x);
-		
-		byte[] reply = RPCUtils.marshallInteger(resx);
-		
-		return reply;
+
+		return RPCUtils.marshallInteger(resx);
 	}
 	
 	public int m(int x) {

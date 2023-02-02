@@ -1,5 +1,7 @@
 package no.hvl.dat110.messaging;
 
+import no.hvl.dat110.rpc.RPCUtils;
+
 public class Message {
     private byte[] data;
 
@@ -11,5 +13,9 @@ public class Message {
 
     public byte[] getData() {
         return this.data;
+    }
+
+    public String toString() {
+        return RPCUtils.unmarshallString(data);
     }
 }

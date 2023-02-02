@@ -2,8 +2,6 @@ package no.hvl.dat110.messaging.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-
 // import org.junit.Test;
 import org.junit.jupiter.api.Test;
 
@@ -11,9 +9,7 @@ import no.hvl.dat110.messaging.Message;
 import no.hvl.dat110.messaging.MessageUtils;
 
 class TestMessage {
-
 	private byte[] createData (int size) {
-	
 		byte[] data = new byte[size];
 		
 		for (int i = 0; i<data.length;i++) {
@@ -25,7 +21,6 @@ class TestMessage {
 	
 	@Test
 	void testEncapsulate() {
-		
 		int size = 56;
 		byte[] data = createData(size);
 		
@@ -44,7 +39,6 @@ class TestMessage {
 		
 	@Test
 	void testDecapsulate() {
-		
 		byte[] encoded = new byte[MessageUtils.SEGMENTSIZE];
 		
 		encoded[0] = 5;
@@ -67,7 +61,6 @@ class TestMessage {
 
 	@Test
 	void EncapsulateDecapsulate () {
-	
 		for (int size = 0;size <= MessageUtils.SEGMENTSIZE-1;size++) {
 			
 			byte[] data = createData(size);
@@ -79,9 +72,8 @@ class TestMessage {
 			Message message2 = MessageUtils.decapsulate(encoded);
 			
 			byte[] decoded = message2.getData();
-			
-			assertTrue(Arrays.equals(data, decoded));
+
+			assertArrayEquals(data, decoded);
 		}
-		
 	}	
 }

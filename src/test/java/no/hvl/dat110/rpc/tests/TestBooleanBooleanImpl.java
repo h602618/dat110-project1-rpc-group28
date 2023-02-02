@@ -5,20 +5,16 @@ import no.hvl.dat110.rpc.RPCUtils;
 import no.hvl.dat110.rpc.RPCServer;
 
 public class TestBooleanBooleanImpl extends RPCRemoteImpl {
-
 	public TestBooleanBooleanImpl(byte rpcid, RPCServer rpcserver) {
 		super(rpcid,rpcserver);
 	}
 	
 	public byte[] invoke(byte[] request) {
-
 		boolean b = RPCUtils.unmarshallBoolean(request);
 
 		boolean resb = m(b);
 
-		byte[] reply = RPCUtils.marshallBoolean(resb);
-
-		return reply;
+		return RPCUtils.marshallBoolean(resb);
 	}
 
 	public boolean m(boolean b) {
